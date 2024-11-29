@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abertura de Chamados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        input, textarea, select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Abertura de Chamados</h2>
+<form id="chamadoForm">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" name="telefone" required>
+
+    <label for="cargo">Cargo:</label>
+    <input type="text" id="cargo" name="cargo" required>
+
+    <label for="filial">Filial:</label>
+    <select id="filial" name="filial" required>
+        <option value="">Selecione a Filial</option>
+        <option value="Filial 1">Filial 1</option>
+        <option value="Filial 2">Filial 2</option>
+        <option value="Filial 3">Filial 3</option>
+    </select>
+
+    <label for="tipoChamado">Tipo do Chamado:</label>
+    <input type="text" id="tipoChamado" name="tipoChamado" required>
+
+    <label for="descricao">Descrição do Problema:</label>
+    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+    <label for="foto">Enviar Foto:</label>
+    <input type="file" id="foto" name="foto" accept="image/*" required>
+
+    <button type="submit">Enviar Chamado</button>
+</form>
+
+<p id="resultado"></p>
+
+<script>
+    document.getElementById('chamadoForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const cargo = document.getElementById('cargo').value;
+        const filial = document.getElementById('filial').value;
+        const tipoChamado = document.getElementById('tipoChamado').value;
+        const descricao = document.getElementById('descricao').value;
+        const foto = document.getElementById('foto').files[0];
+
+        const protocolo = 'CH-' + Math.floor(Math.random() * 1000000);
+
+        // Simulação de envio (descomente a parte de fetch para enviar os dados a um servidor)
+        /*
+        const formData = new FormData();
+        formData.append('nome', nome);
+        formData.append('email', email);
+        formData.append('telefone', telefone);
+        formData.append('cargo', cargo);
+        formData.append('filial', filial);
+        formData.append('tipoChamado', tipoChamado);
+        formData.append('descricao', descricao);
+        formData.append('foto', foto);
+
+        fetch('https://seu-servidor.com/api/chamados', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('resultado').innerText = 'Chamado aberto com sucesso! Protocolo: ' + protocolo;
+            this.reset();
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            document.getElementById('resultado').innerText = 'Ocorreu um erro ao abrir o chamado.';
+        });
+        */
+
+        // Simulação de sucesso (remova o comentário acima e use a Fetch API no lugar)
+        document.getElementById('resultado').innerText = 'Chamado aberto com sucesso! Protocolo: ' + protocolo;
+        this.reset(); // Limpa o formulário
+    });
+</script>
+
+</body>
+</html>
